@@ -18,11 +18,13 @@
     align-items: center;
     width: 100%;
 }
-
+.resultCard h4 {
+    color: white;
+    font-size: 18px;
+}
 .resultCard #result {
     color: white;
     font-size: 60px;
-    padding-bottom: 2rem;
 }
 
 .btnCard{
@@ -54,6 +56,14 @@
 
 .choices svg {
     fill: white;
+}
+
+#playerChoice {
+    color: rgb(12, 209, 12);
+}
+
+#computerChoice {
+    color: red;
 }
 
 .center {
