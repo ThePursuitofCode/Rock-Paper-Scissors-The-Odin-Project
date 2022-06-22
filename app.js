@@ -1,9 +1,35 @@
+const rockBtn = document.querySelector('#rock');
+const paperBtn = document.querySelector('#paper');
+const scissorsBtn = document.querySelector('#scissors');
 
+const displayResult = document.querySelector('#result');
 
-function playRound(){
-    const playerSelection = prompt("Rock, Paper, or Scissors?").toLowerCase()
-    const computerSelection = computerPlay()
+const playerChoice = document.querySelector('#playerChoice');
+const computerChoice = document.querySelector('#computerChoice');
 
+const displayPlayerScore = document.querySelector('#playerScore');
+const displayComputerScore = document.querySelector('#computerScore');
+
+let playerSelection = null
+
+rockBtn.addEventListener('click', ()=>{
+    playerSelection = 'rock';
+    playRound(playerSelection)
+})
+
+paperBtn.addEventListener('click', ()=>{
+    playerSelection = 'paper';
+    playRound(playerSelection)
+})
+
+scissorsBtn.addEventListener('click', ()=>{
+    playerSelection = 'scissors';
+    playRound(playerSelection)
+})
+
+function playRound(playerSelection){
+    const computerSelection = computerPlay();
+    let result = null;
     function computerPlay(){
         let randomNum = Math.floor(Math.random() * 3) + 1
         if (randomNum === 1){
@@ -18,23 +44,23 @@ function playRound(){
     console.log(`The computer picked ${computerSelection}`)
 
     if(playerSelection === computerSelection){
-        return "It's a tie!"
+        result = "It's a tie!"
     } else if (playerSelection === "rock" && computerSelection === "scissors"){
-        return "Player Wins!"
+        result = "Player Wins!"
     } else if (playerSelection === "scissors" && computerSelection === "rock"){
-        return "Computer Wins!"
+        result = "Computer Wins!"
     } else if (playerSelection === "paper" && computerSelection === "rock"){
-        return "Player Wins!"
+        result = "Player Wins!"
     } else if (playerSelection === "rock" && computerSelection === "paper"){
-        return "Computer Wins!"
+        result = "Computer Wins!"
     } else if (playerSelection === "scissors" && computerSelection === "paper"){
-        return "Player Wins!"
+        result = "Player Wins!"
     } else if (playerSelection === "paper" && computerSelection === "scissors"){
-        return "Computer Wins!"
+        result = "Computer Wins!"
     }
+    displayResult.textContent = result
+    playerChoice.textContent = playerSelection.toUpperCase()
+    computerChoice.textContent = computerSelection.toUpperCase()
 }
 
 
-for(let i = 0; i < 5; i++){
-    console.log(playRound())
-}
